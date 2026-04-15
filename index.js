@@ -95,7 +95,7 @@ async function main() {
                     .sort({ joinedAt: 1 })
                     .toArray();
 
-                return sendJSON(res, 200, { count: entries.length, entries });
+                return sendJSON(res, 200, { count: entries.length });
             } catch (err) {
                 console.error(err);
                 return sendJSON(res, 500, { error: "Internal server error." });
