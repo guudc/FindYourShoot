@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Shoot</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/carousel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Hind:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/logo.png" />
+    <link rel="preload" href="img/carousel/video_1.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="img/carousel/video_2.MOV" as="video" type="video/mp4">
+
+    <style>
+        /* ── Toast notification ─────────────────────────────────────── */
+        #toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(120%);
+            padding: 0.65rem 1.4rem;
+            border-radius: 999px;
+            font-family: 'Hind', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #fff;
+            pointer-events: none;
+            opacity: 0;
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        opacity 0.3s ease;
+            z-index: 9999;
+            white-space: nowrap;
+        }
+        #toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+        #toast.success { background: #22c55e; }
+        #toast.error   { background: #ef4444; }
+        #toast.info    { background: #6366f1; }
+
+        /* ── Button loading state ───────────────────────────────────── */
+        .waitlist-btn[data-loading="true"] {
+            opacity: 0.7;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .waitlist-btn[data-loading="true"]::after {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border: 2px solid currentColor;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ── Input error state ──────────────────────────────────────── */
+        .message-box.invalid {
+            border-color: #ef4444 !important;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-container">
+
+        <!-- Background Carousel -->
+        <div id="bg-carousel" class="bg-carousel">
+            <div class="bg-slide">
+                <div class="bg-slide-inner" style="background-image: url('https://res.cloudinary.com/diuaopjgw/image/upload/v1776261742/bg_1_x065xp.jpg')">
+                </div>
+            </div>
+            <div class="bg-slide">
+                <video src="https://res.cloudinary.com/diuaopjgw/video/upload/v1776261851/video_2_e7acvg.mov" muted playsinline loop preload="auto"></video>
+            </div>
+            <div class="bg-slide">
+                <div class="bg-slide-inner" style="background-image: url('https://res.cloudinary.com/diuaopjgw/image/upload/v1776261856/bg_2_ab8tup.jpg')">
+                </div>
+            </div>
+            <div class="bg-slide">
+                <div class="bg-slide-inner" style="background-image: url('https://res.cloudinary.com/diuaopjgw/image/upload/v1776261771/bg_4_m2ta2s.jpg')">
+                </div>
+            </div>
+            <div class="bg-slide">
+                <video src="https://res.cloudinary.com/diuaopjgw/video/upload/v1776261868/video_1_kukvqb.mp4" muted playsinline loop preload="auto"></video>
+            </div>
+            <div class="bg-slide">
+                <div class="bg-slide-inner" style="background-image: url('https://res.cloudinary.com/diuaopjgw/image/upload/v1776261758/bg_3_gglkeo.jpg')">
+                </div>
+            </div>
+            <div class="bg-slide">
+                <div class="bg-slide-inner" style="background-image: url('https://res.cloudinary.com/diuaopjgw/image/upload/v1776261749/bg_5_d25qyo.jpg')">
+                </div>
+            </div>
+        </div>
+
+        <!-- Dark overlay -->
+        <div class="bg-overlay"></div>
+
+        <!-- Main Content Card -->
+        <main class="glass-card frosted-glass">
+            <span class="gradient-title handlee-regular" data-text="Find Your Shoot">Find Your Shoot</span>
+            <span class="gradient-sub handlee-regular" id="sub-text">
+                Join 10+ persons waiting to find their next perfect shoot
+            </span>
+
+            <div class="form-parent">
+                <input
+                    id="email-input"
+                    class="message-box"
+                    type="email"
+                    placeholder="@email.com"
+                    autocomplete="email"
+                />
+                <button class="waitlist-btn" id="join-btn">Join waitlist</button>
+            </div>
+        </main>
+
+        <!-- Social Bar -->
+        <nav class="social-dock frosted-glass">
+            <a href="#"><i class="fa-brands fa-telegram"></i></a>
+            <a href="https://www.instagram.com/findyourshoot1?igsh=NDNnd2NkdnFsNHRk"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://x.com/FindYourShoot"><i class="fa-brands fa-x-twitter"></i></a>
+        </nav>
+
+    </div>
+
+    <!-- Toast -->
+    <div id="toast"></div>
+
+</body>
+
+<script src="scripts/carousel.js"></script>
+<script src="scripts/waitlist.js"></script>
+
+</html>
