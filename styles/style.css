@@ -15,7 +15,7 @@ body,
 html {
     height: 100%;
     width: 100%;
-    overflow: hidden;
+  /*  overflow: hidden;*/
     font-family: "Hind";
     /* Prevent scrolling */
 }
@@ -32,7 +32,7 @@ button {
 }
 
 .main-container {
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     /* Replace with your actual image path */
     background-image: url('https://images.unsplash.com/photo-1493863641943-9b68992a8d07?q=80&w=2000');
