@@ -1,5 +1,5 @@
 /* ── Config ────────────────────────────────────────────────────── */
-const API_BASE = 'https://findyourshoot.onrender.com'; // ← change to your deployed URL
+const API_BASE = 'https://api.findyourshoot.com'; // ← change to your deployed URL
 
 /* ── Elements ──────────────────────────────────────────────────── */
 const emailInput = document.getElementById('email-input');
