@@ -3,7 +3,7 @@ const { MongoClient } = require("mongodb");
 const dotenv = require('dotenv')
 dotenv.config()
 // ── Config ────────────────────────────────────────────────────────────────────
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4040;
 const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017";
 const DB_NAME = "waitlist_db";
 const COLLECTION = "emails";
