@@ -1,7 +1,7 @@
 .bg-carousel {
     position: fixed;
     inset: 0;
-    z-index: 0;
+    z-index: 0; /* ── Layer 1: bottom of the stack */
     overflow: hidden;
     background: #000;
 }
@@ -13,7 +13,6 @@
     will-change: transform, opacity, filter;
 }
 
-/* The inner div handles the idle movement */
 .bg-slide-inner {
     position: absolute;
     inset: 0;
@@ -21,14 +20,10 @@
     background-position: 20% 20%;
     width: 100%;
     height: 100%;
-    /* Fixes sub-pixel jitter */
     will-change: transform;
     backface-visibility: hidden;
 }
 
-/* ── Add these rules to carousel.css ── */
-
-/* Video fills the slide exactly like a background-cover image */
 .bg-slide video {
     position: absolute;
     inset: 0;
@@ -36,18 +31,16 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    /* No idle zoom/pan on video — the footage provides its own motion */
     will-change: opacity;
     backface-visibility: hidden;
-    /* Prevent the native video controls / context-menu UI from showing */
     pointer-events: none;
 }
 
 @media (max-width: 600px) {
     .bg-slide-inner {
-       background-size: cover;
+        background-size: cover;
         background-position: top center;
-         }
+    }
 }
 
 .bg-slide.active {
@@ -60,35 +53,17 @@
     z-index: 1;
 }
 
-/* Subtle movements for 7s duration */
 @keyframes idleZoom {
-    0% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(1.04);
-    }
-
-    /* Small range = smoother turnaround */
+    0%   { transform: scale(1); }
+    100% { transform: scale(1.04); }
 }
 
 @keyframes idlePan {
-    0% {
-        transform: scale(1.05) translateX(-1.5%);
-    }
-
-    100% {
-        transform: scale(1.05) translateX(1.5%);
-    }
+    0%   { transform: scale(1.05) translateX(-1.5%); }
+    100% { transform: scale(1.05) translateX(1.5%); }
 }
 
 @keyframes idleDrift {
-    0% {
-        transform: scale(1.02) translate(-0.5%, -0.5%);
-    }
-
-    100% {
-        transform: scale(1.06) translate(0.5%, 0.5%);
-    }
+    0%   { transform: scale(1.02) translate(-0.5%, -0.5%); }
+    100% { transform: scale(1.06) translate(0.5%, 0.5%); }
 }
